@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MX518 Remake — Preferred Parts Build</title>
+<style>
+  :root { --fg:#1d1d1f; --muted:#6e6e73; --line:#e3e3e6; --bg:#fff; --accent:#0a5bd3; --soft:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#ececef; --muted:#a1a1a6; --line:#2f2f33; --bg:#141416; --accent:#6ea8ff; --soft:#1e1e21; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width: 920px; margin: 0 auto; padding: 32px 20px 96px; }
+  h1 { font-size: 2rem; line-height:1.2; margin: 2.2em 0 .4em; }
+  h1:first-child { margin-top: 0; }
+  h1.part { border-top: 2px solid var(--fg); padding-top: .6em; }
+  h2 { font-size: 1.4rem; margin: 2em 0 .4em; padding-top: .4em; border-top: 1px solid var(--line); }
+  h3 { font-size: 1.1rem; margin: 1.6em 0 .4em; }
+  h1, h2, h3 { scroll-margin-top: 72px; }
+  p { margin: .5em 0 .9em; }
+  a { color: var(--accent); }
+  .byline { color: var(--muted); margin-top: 0; }
+  nav.toc { position: sticky; top: 0; z-index: 2; background: var(--bg); border-bottom: 1px solid var(--line); margin: 0 -20px 1.2em; padding: 10px 20px; font-size: .92rem; overflow-x: auto; white-space: nowrap; }
+  nav.toc a { text-decoration: none; margin-right: 14px; }
+  nav.toc strong { margin-right: 10px; }
+  .table-wrap { overflow-x: auto; margin: .6em 0 1.2em; }
+  table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--soft); font-weight: 600; }
+  ul.check { list-style: none; padding-left: 0; }
+  ul.check li::before { content: "☐"; margin-right: .5em; color: var(--muted); }
+  footer { margin-top: 4em; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+
+<h1 id="top">MX518 Remake — Preferred Parts Build</h1>
+<p class="byline">Updated 2026-11-21 · Rich</p>
+
+<nav class="toc">
+  <strong>Jump to:</strong>
+  <a href="#wired-build">Wired build</a>
+  <a href="#preferred-buy-list">Buy list</a>
+  <a href="#overview">Overview</a>
+  <a href="#main-switches">Main switches</a>
+  <a href="#side-switches">Side switches</a>
+  <a href="#middle-click">Middle click</a>
+  <a href="#dpi-buttons-optional">DPI buttons</a>
+  <a href="#encoder">Encoder</a>
+  <a href="#sensor">Sensor</a>
+  <a href="#mcu">MCU</a>
+  <a href="#cable">Cable</a>
+  <a href="#wireless-build">Wireless build</a>
+</nav>
+
+<h1 id="wired-build" class="part">Wired build</h1>
+
+<h2 id="preferred-buy-list">Preferred buy list</h2>
+<p><strong>Both builds (wired and wireless)</strong></p>
+<ul class="check">
+  <li><strong>Main switches (Left/Right):</strong> Kailh GM 4.0</li>
+  <li><strong>Side switches:</strong> Kailh GM 2.0</li>
+  <li><strong>Middle click:</strong> Kailh GM 2.0</li>
+  <li><strong>DPI buttons (optional imo, include for faithfulness to OG design):</strong> Low-profile tactile switches</li>
+  <li><strong>Encoder:</strong> TTC Gold Dustproof</li>
+  <li><strong>Sensor:</strong> PAW3950</li>
+</ul>
+<p><strong>Wired build only</strong></p>
+<ul class="check">
+  <li><strong>MCU:</strong> Nuvoton M483</li>
+  <li><strong>Cable:</strong> Paracord</li>
+</ul>
+<p>In the wireless build the M483 moves into the receiver dongle, paired with an nRF52820 radio, and the mouse uses an nRF52840 instead. See <a href="#wireless-build">Wireless build</a> for the full list of wireless parts.</p>
+
+<h2 id="overview">Overview</h2>
+<p>This build recreates the Logitech MX518 shape with a modern internal stack: Kailh GM 4.0 main switches, a PAW3950 sensor and a Nuvoton M483 MCU. The switch and encoder picks still need hands-on comparison before they are final.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Component</th><th>Preferred selection</th><th>Alternatives to test</th></tr></thead>
+<tbody>
+<tr><td>Main switches (L/R click)</td><td>Kailh GM 4.0</td><td>Huano Transparent Yellow Shell White Dot, Huano Transparent Blue Shell Pink Dot, Omron D2FC-F-7N</td></tr>
+<tr><td>Side switches</td><td>Kailh GM 2.0</td><td>—</td></tr>
+<tr><td>Middle click</td><td>Kailh GM 2.0</td><td>—</td></tr>
+<tr><td>DPI buttons (optional)</td><td>Low-profile tactile switches</td><td>—</td></tr>
+<tr><td>Encoder</td><td>TTC Gold Dustproof</td><td>TTC Silver Wide (fallback if Gold is unavailable)</td></tr>
+<tr><td>Sensor</td><td>PAW3950</td><td>PAW3395</td></tr>
+<tr><td>MCU</td><td>Nuvoton M483</td><td>—</td></tr>
+<tr><td>Cable</td><td>Flexible silicone or paracord</td><td>—</td></tr>
+</tbody></table></div>
+
+<h2 id="main-switches">Main switches</h2>
+<p><strong>Preferred order:</strong></p>
+<ol>
+  <li>Kailh GM 4.0 (Heavy, tactile choice)</li>
+  <li>Huano Transparent Yellow Shell White Dot (Easy, crispy and less fatigue choice)</li>
+  <li>Huano Transparent Blue Shell Pink Dot (Medium, softer and more controlled choice)</li>
+  <li>Omron D2FC-F-7N (G1) (OG switch, not my preferred choice for modern MX518)</li>
+</ol>
+<p>Kailh GM 4.0 is the first choice: the closest available match to the Kailh GX, with a firmer, more pronounced tactile click.</p>
+<p>Huano Yellow is second, a crisp, light click with fast rebound used in newer mice such as the Keychron G3.</p>
+<p>Huano Blue Shell Pink Dot is third, a softer, more controlled click that may be more comfortable over long sessions.</p>
+<p>Omron D2FC-F-7N, the original MX518 switch, is fourth.</p>
+
+<h3 id="candidates">Candidates</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Switch</th><th>Role</th><th>Expected feel</th><th>Trade-offs</th></tr></thead>
+<tbody>
+<tr><td>Kailh GM 4.0</td><td>1st choice (preferred)</td><td>Firmer, more pronounced tactile click</td><td>Heavier and more deliberate than Huano Yellow; may cause more finger fatigue in long sessions</td></tr>
+<tr><td>Huano Transparent Yellow Shell White Dot</td><td>2nd choice</td><td>Crisp, light, fast rebound</td><td>Conventional mechanical switch with broad sourcing; crispness, weight and rebound need side-by-side testing</td></tr>
+<tr><td>Huano Transparent Blue Shell Pink Dot</td><td>3rd choice</td><td>Softer, more controlled click</td><td>Less sharp, less aggressive rebound than Huano Yellow; worth testing for long-term comfort</td></tr>
+<tr><td>Omron D2FC-F-7N (G1)</td><td>4th choice (original <em>MX518</em> switch)</td><td>Light–medium click</td><td>Lowest lifespan rating of the four (20M)</td></tr>
+</tbody></table></div>
+
+<h3 id="main-switch-comparison">Main switch comparison</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Characteristic</th><th>Kailh GM 4.0</th><th>Huano Transparent Yellow Shell White Dot</th><th>Huano Transparent Blue Shell Pink Dot</th><th>Omron D2FC-F-7N (G1)</th></tr></thead>
+<tbody>
+<tr><td>Rated operating force</td><td>70 ± 10 gf</td><td>~66 gf (0.65 N)</td><td>65 ± 15 gf (often listed as ~70 gf / 0.74 N)</td><td>60 ± 15 gf</td></tr>
+<tr><td>Independently measured force</td><td>~69.8 gf</td><td>~59.8 gf</td><td>~60 gf</td><td>~57 gf*</td></tr>
+<tr><td>Relative weight</td><td>Heavy</td><td>Medium</td><td>Medium</td><td>Light–medium</td></tr>
+<tr><td>Release force</td><td>≥25 gf</td><td>Not specified</td><td>20 gf</td><td>Not specified</td></tr>
+<tr><td>Lifespan rating</td><td>60M</td><td>120M</td><td>80M</td><td>20M</td></tr>
+<tr><td>Switch type</td><td>Mechanical</td><td>Mechanical</td><td>Mechanical</td><td>Mechanical</td></tr>
+</tbody></table></div>
+<p>Huano figures: <a href="https://shop.facfox.com/?p=3863">FacFox Huano switch specs</a> (Yellow listed as Huano V2 Clear Yellow, 120M, 0.65 N; Blue Pink Dot release force is the V1 spec), <a href="https://www.maxgaming.com/en/other-accessories/blue-shell-pink-dot-switch-2-pack">MaxGaming Blue Shell Pink Dot</a>, and the <a href="https://docs.google.com/spreadsheets/d/1x9iUvx3j2GiWwj_o2_jmsofY0Hoppg26QWolg-_Uaj4">community switch force sheet</a> for measured force.</p>
+
+<h2 id="side-switches">Side switches</h2>
+<p><strong>Preferred: Kailh GM 2.0</strong></p>
+<p>Kailh GM 2.0 gives a crisp, tactile click and avoids a spongy feel. It is already proven in the OP1 family.</p>
+<p><strong>Trade-offs:</strong> Keeps the proven reference design. Compare it against Huano switches for sound and tactile feedback.</p>
+
+<h2 id="middle-click">Middle click</h2>
+<p><strong>Preferred: Kailh GM 2.0</strong></p>
+<p>Same choice and reasoning as the side switches: a crisp, tactile click without the spongy feel common in middle clicks.</p>
+<p><strong>Trade-offs:</strong> May need a different PCB footprint and button mechanism. Prioritize travel and tactility over brand.</p>
+
+<h2 id="dpi-buttons-optional">DPI buttons (optional)</h2>
+<p><strong>Preferred: Low-profile tactile switches</strong></p>
+<p>Short actuation and a compact footprint let the dedicated DPI buttons be pressed without disturbing grip.</p>
+<p><strong>Trade-offs:</strong> Aim for lighter actuation than the main clicks, but not so light that they trigger by accident.</p>
+<p><strong>Open question:</strong> Does the build need to stay fully faithful to the original design? DPI can be set in the mouse software, and dedicated DPI switches aren't used in practice. Keeping them gives a more accurate MX518 replica but adds hardware design complexity.</p>
+
+<h2 id="encoder">Encoder</h2>
+<p><strong>Preferred: TTC Gold Dustproof</strong></p>
+<p>TTC Gold is pretty much the standard premium encoder, meant to give a more deliberate and defined scrolling feel. It comes in several heights, commonly 9 mm, 10 mm and 11 mm.</p>
+<h3 id="encoder-candidates">Candidates</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Encoder</th><th>Role</th><th>Expected feel</th><th>Trade-offs</th></tr></thead>
+<tbody>
+<tr><td>TTC Gold Dustproof</td><td>Preferred</td><td>Stronger tactile character</td><td>Worth testing for feedback and consistency; actual feel depends on variant and wheel assembly</td></tr>
+<tr><td>TTC Silver Wide</td><td>Fallback if Gold can't be sourced</td><td>More balanced tactile scrolling</td><td>May give less pronounced feedback than TTC Gold; compare directly before finalizing</td></tr>
+</tbody></table></div>
+
+<h2 id="sensor">Sensor</h2>
+<p><strong>Preferred order:</strong></p>
+<ol>
+  <li>PAW3950</li>
+  <li>PAW3395</li>
+</ol>
+<ul>
+  <li><strong>Chip price:</strong> On Alibaba the PAW3950 runs about $8.20–$10.50 per chip versus $7.70–$9.40 for the PAW3395, roughly $0.50–$1 more.</li>
+  <li><strong>Mouse premium:</strong> Brands charge noticeably more when a mouse moves from the PAW3395 to the PAW3950: the OP1 8K went from $74.99 to $89.99 for the v2 (+$15), and the Lamzu Maya from $93.99 to $119.99 for the Maya X (+$26, though it also bundles an 8K dongle). Most of that premium comes from other upgrades, not the sensor's cost.</li>
+</ul>
+<p>The PAW3950 is PixArt's newer flagship and the sensor the OP1 8K v2 itself uses, so it keeps this build closest to the reference. The PAW3395 is the fallback: an older flagship with very established implementations and low power draw.</p>
+<p><strong>Trade-offs:</strong> The PAW3950 adds headroom (30,000 DPI, 750 IPS) that is rarely noticeable in everyday tracking, and its ecosystem is newer. Datasheet and firmware access must be verified for either sensor.</p>
+
+<h3 id="paw3395-key-specs">PAW3395 key specs</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Spec</th><th>Value</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td>Maximum DPI</td><td>26,000</td><td>Room to increase DPI if needed</td></tr>
+<tr><td>Maximum tracking speed</td><td>650 IPS</td><td>Handles very fast mouse movements</td></tr>
+<tr><td>Maximum acceleration</td><td>50 G</td><td>Handles rapid directional changes</td></tr>
+<tr><td>Maximum frame rate</td><td>20,000 FPS</td><td>High-speed surface tracking</td></tr>
+<tr><td>Tracking technology</td><td>Optical</td><td>Established gaming mouse technology</td></tr>
+<tr><td>Lift-off distance</td><td>Configurable</td><td>Controls when tracking stops as you lift the mouse</td></tr>
+<tr><td>Connectivity</td><td>Wired internally</td><td>Wireless capability depends on the MCU and wireless implementation</td></tr>
+</tbody></table></div>
+
+<h3 id="paw3950-vs-paw3395">PAW3950 vs PAW3395</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Specification</th><th>PAW3950</th><th>PAW3395</th></tr></thead>
+<tbody>
+<tr><td>Maximum DPI</td><td>30,000</td><td>26,000</td></tr>
+<tr><td>Maximum IPS</td><td>750</td><td>650</td></tr>
+<tr><td>Maximum acceleration</td><td>70 G</td><td>50 G</td></tr>
+<tr><td>Generation</td><td>Newer flagship</td><td>Older flagship</td></tr>
+<tr><td>Implementation maturity</td><td>Newer ecosystem</td><td>Very established</td></tr>
+<tr><td>Competitive suitability</td><td>Excellent</td><td>Excellent</td></tr>
+</tbody></table></div>
+
+<h3 id="mice-using-the-paw3950">Mice using the PAW3950</h3>
+<p>US list prices from reviews and retailers; weights and specs vary by version.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Mouse</th><th>Type</th><th>Price (USD)</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.rtings.com/mouse/reviews/endgame-gear/op1-8k-v2">Endgame Gear OP1 8K v2</a></td><td>Wired</td><td>$89.99</td><td>Direct reference for this build: 49.5 g, 8,000 Hz, custom PAW3950 variant, Nuvoton MCU, Kailh dustproof encoder</td></tr>
+<tr><td><a href="https://www.eloshapes.com/mouse/review/endgame-gear-op1w-4k-v2">Endgame Gear OP1w 4K v2</a></td><td>Wireless</td><td>$129.99</td><td>Same shape with a Nordic nRF52840 MCU; reference if a wireless version is ever considered</td></tr>
+<tr><td><a href="https://techpowerup.com/review/lamzu-maya-x/8.html">Lamzu Maya X</a></td><td>Wireless</td><td>$119.99</td><td>Successor to the PAW3395 Maya; 8,000 Hz with the included dongle</td></tr>
+<tr><td><a href="https://techpowerup.com/review/scyrox-v8/8.html">Scyrox V8</a></td><td>Wireless</td><td>$69.99</td><td>About 40 g solid shell, 8,000 Hz; budget PAW3950 benchmark</td></tr>
+<tr><td><a href="https://attackshark.com/collections/pixart-pmw3950max">Attack Shark X3MAX</a></td><td>Wireless</td><td>$47.99 list (about $41 on sale)</td><td>Lowest-cost PAW3950 implementation in this list</td></tr>
+</tbody></table></div>
+
+<h3 id="mice-using-the-paw3395">Mice using the PAW3395</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Mouse</th><th>Type</th><th>Price (USD)</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://gamesradar.com/hardware/gaming-mice/endgame-gear-op1-8k-review">Endgame Gear OP1 8K</a></td><td>Wired</td><td>$74.99</td><td>The OP1 before the v2 sensor update: 50.5 g, Kailh GX switches</td></tr>
+<tr><td><a href="https://techpowerup.com/review/lamzu-maya-x/8.html">Lamzu Maya</a></td><td>Wireless</td><td>$93.99</td><td>Predecessor of the Maya X; a direct PAW3395 vs PAW3950 pair</td></tr>
+<tr><td><a href="https://finalboss.io/the-mchose-l7-pro-the-60-ultralight-mouse">MCHOSE L7 Pro+</a></td><td>Wireless</td><td>About $60</td><td>Budget ultralight with tri-mode connectivity</td></tr>
+<tr><td><a href="https://www.rtings.com/mouse/tools/compare/endgame-gear-xm2w-4k-scyrox-v8/80544/77564">Endgame Gear XM2w 4K</a></td><td>Wireless</td><td>—</td><td>4,000 Hz; same brand family as the OP1</td></tr>
+<tr><td><a href="https://www.rtings.com/mouse/reviews/attack-shark/x3">Attack Shark X3</a></td><td>Wireless</td><td>$39.99 list ($33.99 on sale)</td><td>49 g, 1,000 Hz, Beken BK3633 MCU; RTINGS found click latency too inconsistent for competitive play</td></tr>
+</tbody></table></div>
+
+<h3 id="sourcing-and-price">Sourcing and price</h3>
+<p>At chip level the two sensors differ by only a few dollars; the larger cost difference shows up in finished mice.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>PAW3950</th><th>PAW3395</th></tr></thead>
+<tbody>
+<tr><td>Single chip with lens (marketplace)</td><td>Not consistently listed</td><td>About $10–$17</td></tr>
+<tr><td>Wholesale chip (Alibaba)</td><td>~$8.20–$10.50</td><td>$7.70–$9.40</td></tr>
+<tr><td>Availability (Alibaba)</td><td>Low–moderate</td><td>Moderate</td></tr>
+<tr><td>Breakout module</td><td>About $20–$29</td><td>About $25</td></tr>
+<tr><td>Mice in the tables above</td><td>About $41–$130</td><td>About $34–$94</td></tr>
+</tbody></table></div>
+<ul>
+  <li>Finished-mouse step-ups suggest a modest premium: OP1 8K $74.99 → OP1 8K v2 $89.99, and Lamzu Maya $93.99 → Maya X $119.99 (the Maya X also bundles an 8K dongle).</li>
+  <li>Single-unit chips are mostly sold through marketplace sellers (AliExpress, Alibaba). Confirm the parts are genuine and that the datasheet and firmware support are available before committing.</li>
+  <li>Either sensor adds little to the parts cost. The PAW3950's main value here is matching the OP1 8K v2 reference.</li>
+</ul>
+<p>Sourcing prices: <a href="https://www.aliexpress.us/item/3256806028929913.html">AliExpress PAW3395 chip</a>, <a href="https://www.aliexpress.us/item/3256806817851445.html">AliExpress PAW3395 module</a>, <a href="https://he.aliexpress.com/w/wholesale-pixart-3950-sensor.html">AliExpress PAW3950 modules</a>, <a href="https://electronics.alibaba.com/product/mouse-sensor-price">Alibaba bulk pricing</a>.</p>
+
+<h2 id="mcu">MCU</h2>
+<p><strong>Preferred: Nuvoton M483</strong></p>
+<p>The Nuvoton M483 is a high-speed USB-capable MCU already proven in a commercial 8K gaming mouse.</p>
+<p><strong>Trade-offs:</strong> Keeps the proven architecture, but needs firmware development, a USB HID implementation and selection of the exact MCU variant.</p>
+
+<h2 id="cable">Cable</h2>
+<p><strong>Preferred: Lifted Paracord</strong></p>
+<p>Paracord is light and flexible and doesn't get in the way</p>
+
+<h1 id="wireless-build" class="part">Wireless build</h1>
+<p>The wireless build keeps the wired build's switches, encoder and sensor. What changes is the electronics: a wireless MCU in the mouse, a separate 8K receiver dongle, and a battery with its charging and power circuitry. The target is 8,000 Hz wireless polling.</p>
+
+<h2 id="buy-list-changes">Buy list changes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Component</th><th>Wired build</th><th>Wireless build</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td>Mouse MCU</td><td>Nuvoton M483</td><td>Nordic nRF52840 (wireless SoC)</td><td>Replace</td></tr>
+<tr><td>Receiver dongle</td><td>Not required</td><td>Custom 8K 2.4 GHz USB dongle: Nordic nRF52820 radio + Nuvoton M483 for USB</td><td>Add</td></tr>
+<tr><td>Battery</td><td>Not required</td><td>1-cell Li-Po, about 300–350 mAh</td><td>Add</td></tr>
+<tr><td>Charging IC</td><td>Not required</td><td>Single-cell Li-Po charging controller</td><td>Add</td></tr>
+<tr><td>Battery protection</td><td>Not required</td><td>Overcharge, over-discharge and short-circuit protection, if not built into the battery or charger</td><td>Add</td></tr>
+<tr><td>Voltage regulator</td><td>Wired USB power</td><td>Low-quiescent-current regulator from battery to system</td><td>Add / redesign</td></tr>
+<tr><td>Battery fuel gauge</td><td>Not required</td><td>MAX17048 or equivalent (optional but recommended)</td><td>Add</td></tr>
+<tr><td>Antenna</td><td>Not required</td><td>2.4 GHz PCB or chip antenna, plus RF matching inductors and capacitors</td><td>Add</td></tr>
+<tr><td>USB-C port</td><td>Wired data connection</td><td>Charging plus optional wired data, with ESD protection</td><td>Change implementation</td></tr>
+<tr><td>Power switch</td><td>Not required</td><td>Small physical on/off switch</td><td>Add</td></tr>
+<tr><td>Dongle PCB</td><td>Not required</td><td>Custom receiver PCB with USB interface and RF circuitry</td><td>Add</td></tr>
+</tbody></table></div>
+<p>These are component categories, not a finished electrical design. Exact part numbers depend on battery chemistry, current draw, antenna layout, charging rate and PCB design.</p>
+
+<h2 id="carries-over-unchanged">Carries over unchanged</h2>
+<p>Kailh GM 4.0 main switches, Kailh GM 2.0 side and middle-click switches, low-profile DPI tactile switches, TTC Gold Dustproof encoder and the PAW3950 sensor. The sensor still needs firmware support for the wireless MCU.</p>
+
+<h2 id="reference-architecture">Reference architecture</h2>
+<p>The Endgame Gear OP1w v2 documents a usable split: an nRF52840 in the mouse, and an nRF52820 radio plus a Nuvoton M483 in the dongle for the USB link to the PC. The M483 doesn't disappear; it moves to the receiver.</p>
+
+<footer><a href="#top">Back to top</a></footer>
+</main>
+</body>
+</html>
